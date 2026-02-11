@@ -1,6 +1,6 @@
 :root{
   --pad-x: 24px;
-  --pad-top: 28px;     /* top padding above header */
+  --pad-top: 28px;     /* header closer to top */
   --pad-bottom: 26px;  /* space below footer mark */
 }
 
@@ -45,7 +45,7 @@ body{
 
 /* Header (non-interactive) */
 .topbar{
-  padding: var(--pad-top) var(--pad-x) 8px; /* reduced gap to flipbook */
+  padding: var(--pad-top) var(--pad-x) 2px;
   display: flex;
   justify-content: center;
   pointer-events: none;
@@ -53,7 +53,7 @@ body{
 
 /* Handwritten header image */
 .header-mark{
-  width: min(280px, 70vw); /* smaller, controlled */
+  width: min(280px, 70vw);
   height: auto;
   display: block;
 }
@@ -66,7 +66,7 @@ body{
   padding: 0 var(--pad-x);
 }
 
-/* Flipbook dominates */
+/* Flipbook — UNCHANGED */
 .flipbook{
   width: min(1200px, 100%);
   height: 78vh;
@@ -74,7 +74,7 @@ body{
   display: block;
 }
 
-/* Footer icon row (LinkedIn | center mark | Spotify) */
+/* Footer icon row */
 .footer-mark{
   display: flex;
   align-items: center;
@@ -112,24 +112,30 @@ body{
   pointer-events: none;
 }
 
-/* Mobile refinement */
+/* --------------------------
+   MOBILE FIX (SURGICAL)
+   -------------------------- */
 @media (max-width: 520px){
   :root{
     --pad-x: 18px;
-    --pad-top: 44px;
+    --pad-top: 22px;
     --pad-bottom: 22px;
   }
 
   .header-mark{
-    width: min(300px, 86vw);
+    width: min(260px, 80vw);
   }
 
-  .flipbook{
-    height: 82vh;
-  }
-
+  /* KEEP FOOTER VISIBLE ON MOBILE */
   .footer-mark{
-    gap: 18px;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
+
+    padding: 10px var(--pad-x)
+      calc(var(--pad-bottom) + env(safe-area-inset-bottom));
   }
 
   .icon-link img{
