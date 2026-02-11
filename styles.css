@@ -105,7 +105,11 @@ body{
     --pad-bottom: 30px;
   }
 
-  .name{ font-size: 16px; }
+  .name{
+    font-size: 16px;
+    font-weight: 500;       /* slightly lighter */
+    letter-spacing: 0.6px; /* wider, editorial */
+  }
   .link{ font-size: 13px; }
 
   /* Don’t force extra height on small screens */
