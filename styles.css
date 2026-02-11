@@ -42,7 +42,7 @@ body{
 
 /* Header (non-interactive, quiet) */
 .topbar{
-  padding: var(--pad-top) var(--pad-x) 8px;
+  padding: var(--pad-top) var(--pad-x) 0px;
   display: flex;
   justify-content: center;
   pointer-events: none;            /* anti-website: no UI affordance */
