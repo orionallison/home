@@ -1,106 +1,116 @@
-:root {
+:root{
   --pad-x: 28px;
   --pad-top: 48px;
   --pad-bottom: 48px;
+
+  /* Light mode defaults */
+  --bg: transparent;
+  --text: #111;
+  --link-hover: 0.55;
+}
+
+/* Auto dark mode */
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg: transparent;
+    --text: #f2f2f2;
+    --link-hover: 0.65;
+  }
 }
 
 /* Reset */
-* {
-  box-sizing: border-box;
-}
+*{ box-sizing: border-box; }
 
-html, body {
+html, body{
   height: 100%;
   margin: 0;
   font-family: Helvetica, Arial, sans-serif;
-  background: transparent;
-  color: #111;
+  background: var(--bg);
+  color: var(--text);
 }
 
-/* Stronger fade-in */
-.fade-in {
+/* More noticeable fade-in */
+.fade-in{
   animation: fadeIn 0.9s cubic-bezier(0.2, 0, 0.1, 1) forwards;
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(12px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+@keyframes fadeIn{
+  from{ opacity: 0; transform: translateY(12px); }
+  to{ opacity: 1; transform: translateY(0); }
 }
 
-/* Page layout */
-body {
+/* Layout */
+body{
   display: grid;
   grid-template-rows: auto 1fr auto;
   min-height: 100vh;
 }
 
 /* Top */
-.topbar {
+.topbar{
   padding: var(--pad-top) var(--pad-x) 16px;
   display: flex;
   justify-content: center;
 }
 
-.name {
-  font-size: 32px;       /* doubled */
-  font-weight: 600;      /* heavier */
+.name{
+  font-size: 32px;
+  font-weight: 600;
   letter-spacing: 0.4px;
 }
 
 /* Middle */
-.stage {
+.stage{
   padding: 0 var(--pad-x);
   display: flex;
   align-items: center;
   justify-content: center;
+
+  /* slightly taller on desktop by giving the stage more vertical space */
+  min-height: 72vh;
 }
 
-.flipbook {
+.flipbook{
   width: min(1200px, 100%);
   height: 100%;
+  min-height: 72vh;   /* desktop gets more height */
   border: none;
   display: block;
 }
 
 /* Bottom */
-.bottombar {
+.bottombar{
   padding: 16px var(--pad-x) var(--pad-bottom);
   display: flex;
   justify-content: center;
 }
 
-.link {
-  font-size: 22px;       /* doubled */
-  font-weight: 600;
-  color: #111;
-  text-decoration: none; /* no underline */
+/* LinkedIn back to original size/weight */
+.link{
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text);
+  text-decoration: none;
   transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
-.link:hover {
-  opacity: 0.55;
+.link:hover{
+  opacity: var(--link-hover);
   transform: translateY(-1px);
 }
 
 /* Mobile refinement */
-@media (max-width: 520px) {
-  :root {
+@media (max-width: 520px){
+  :root{
     --pad-x: 18px;
     --pad-top: 36px;
     --pad-bottom: 36px;
   }
 
-  .name {
-    font-size: 26px;
-  }
+  .name{ font-size: 26px; }
+  .link{ font-size: 13px; }
 
-  .link {
-    font-size: 18px;
-  }
+  /* don’t force extra height on small screens */
+  .stage{ min-height: 0; }
+  .flipbook{ min-height: 0; }
 }
