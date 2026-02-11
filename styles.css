@@ -45,7 +45,7 @@ body{
 
 /* Header (non-interactive) */
 .topbar{
-  padding: var(--pad-top) var(--pad-x) 4px; /* reduced gap to flipbook */
+  padding: var(--pad-top) var(--pad-x) 8px; /* reduced gap to flipbook */
   display: flex;
   justify-content: center;
   pointer-events: none;
