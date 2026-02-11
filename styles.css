@@ -1,32 +1,32 @@
 :root{
-  --pad-x: 28px;
-  --pad-top: 40px;
-  --pad-bottom: 44px;
+  --pad-x: 24px;
+  --pad-top: 36px;
 
-  --bg: transparent;
   --text: #000;
-  --link-hover: 0.5;
 }
 
 /* Reset */
-*{ box-sizing: border-box; }
+*{
+  box-sizing: border-box;
+}
 
 html, body{
+  width: 100%;
   height: 100%;
   margin: 0;
+  overflow: hidden;          /* 🚫 no scrolling */
   font-family: Helvetica, Arial, sans-serif;
-  background: var(--bg);
+  background: transparent;
   color: var(--text);
 }
 
-/* Layout */
+/* Lock the page as a single object */
 body{
   display: grid;
-  grid-template-rows: auto 1fr auto;
-  min-height: 100vh;
+  grid-template-rows: auto 1fr;
 }
 
-/* Sequenced fade-in (header -> flipbook -> footer) */
+/* Sequenced fade-in */
 .fade-seq{
   opacity: 0;
   transform: translateY(10px);
@@ -35,7 +35,6 @@ body{
 
 .fade-1{ animation-delay: 0.05s; }
 .fade-2{ animation-delay: 0.22s; }
-.fade-3{ animation-delay: 0.38s; }
 
 @keyframes riseFade{
   to{
@@ -44,75 +43,45 @@ body{
   }
 }
 
-/* Top: quieter, more “publication” */
+/* Header: quiet, non-interactive */
 .topbar{
-  padding: var(--pad-top) var(--pad-x) 10px;
+  padding: var(--pad-top) var(--pad-x) 8px;
   display: flex;
   justify-content: center;
+  pointer-events: none;     /* 🚫 no interaction */
 }
 
 .name{
-  font-size: 18px;   /* reduced dominance */
+  font-size: 18px;
   font-weight: 600;
-  letter-spacing: 0.2px;
-  line-height: 1.1;
+  letter-spacing: 0.3px;
+  text-align: center;
 }
 
-/* Middle: flipbook priority */
+/* Stage: the only interactive zone */
 .stage{
-  padding: 0 var(--pad-x);
   display: flex;
   align-items: center;
   justify-content: center;
-
-  /* slightly taller on desktop */
-  min-height: 76vh;
+  padding: 0 var(--pad-x);
 }
 
+/* Flipbook dominates */
 .flipbook{
   width: min(1200px, 100%);
-  height: 100%;
-  min-height: 76vh;  /* makes flipbook feel “almost full screen” */
+  height: 78vh;              /* tall, but contained */
   border: none;
   display: block;
 }
 
-/* Bottom */
-.bottombar{
-  padding: 10px var(--pad-x) var(--pad-bottom);
-  display: flex;
-  justify-content: center;
-}
-
-.link{
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--text);
-  text-decoration: none;
-  transition: opacity 0.2s ease, transform 0.2s ease;
-}
-
-.link:hover{
-  opacity: var(--link-hover);
-  transform: translateY(-1px);
-}
-
-/* Mobile refinement */
+/* Mobile: tighter, still locked */
 @media (max-width: 520px){
-  :root{
-    --pad-x: 18px;
-    --pad-top: 28px;
-    --pad-bottom: 30px;
-  }
-
   .name{
     font-size: 16px;
-    font-weight: 500;       /* slightly lighter */
-    letter-spacing: 0.6px; /* wider, editorial */
+    letter-spacing: 0.6px;
   }
-  .link{ font-size: 13px; }
 
-  /* Don’t force extra height on small screens */
-  .stage{ min-height: 0; }
-  .flipbook{ min-height: 0; }
+  .flipbook{
+    height: 82vh;
+  }
 }
