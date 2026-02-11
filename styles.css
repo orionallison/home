@@ -74,20 +74,42 @@ body{
   display: block;
 }
 
-/* Footer logo mark (non-interactive) */
+/* Footer icon row (LinkedIn | center mark | Spotify) */
 .footer-mark{
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  gap: 22px;
   padding: 10px var(--pad-x) var(--pad-bottom);
-  pointer-events: none;
 }
 
-.footer-mark img{
+/* Clickable side icons */
+.icon-link{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-link img{
+  width: 26px;
+  height: auto;
+  opacity: 0.8;
+  display: block;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.icon-link:hover img{
+  opacity: 1;
+  transform: translateY(-1px);
+}
+
+/* Center logo mark (non-interactive) */
+.center-mark{
   width: 30px;
   height: auto;
   opacity: 0.75;
   display: block;
+  pointer-events: none;
 }
 
 /* Mobile refinement */
@@ -106,7 +128,15 @@ body{
     height: 82vh;
   }
 
-  .footer-mark img{
+  .footer-mark{
+    gap: 18px;
+  }
+
+  .icon-link img{
+    width: 22px;
+  }
+
+  .center-mark{
     width: 26px;
     opacity: 0.72;
   }
