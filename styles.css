@@ -1,6 +1,6 @@
 :root{
   --pad-x: 24px;
-  --pad-top: 36px;
+  --pad-top: 56px;
 }
 
 /* Reset */
@@ -50,7 +50,7 @@ body{
 
 /* Handwritten header image */
 .header-mark{
-  width: min(520px, 90vw);         /* responsive */
+  width: min(360px, 80vw);         /* responsive */
   height: auto;
   display: block;
 }
