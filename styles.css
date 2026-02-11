@@ -1,8 +1,6 @@
 :root{
   --pad-x: 24px;
   --pad-top: 36px;
-
-  --text: #000;
 }
 
 /* Reset */
@@ -14,13 +12,12 @@ html, body{
   width: 100%;
   height: 100%;
   margin: 0;
-  overflow: hidden;          /* 🚫 no scrolling */
+  overflow: hidden;                /* anti-website: no scrolling */
   font-family: Helvetica, Arial, sans-serif;
   background: transparent;
-  color: var(--text);
 }
 
-/* Lock the page as a single object */
+/* Lock page as a single object */
 body{
   display: grid;
   grid-template-rows: auto 1fr;
@@ -43,22 +40,22 @@ body{
   }
 }
 
-/* Header: quiet, non-interactive */
+/* Header (non-interactive, quiet) */
 .topbar{
   padding: var(--pad-top) var(--pad-x) 8px;
   display: flex;
   justify-content: center;
-  pointer-events: none;     /* 🚫 no interaction */
+  pointer-events: none;            /* anti-website: no UI affordance */
 }
 
-.name{
-  font-size: 18px;
-  font-weight: 600;
-  letter-spacing: 0.3px;
-  text-align: center;
+/* Handwritten header image */
+.header-mark{
+  width: min(520px, 90vw);         /* responsive */
+  height: auto;
+  display: block;
 }
 
-/* Stage: the only interactive zone */
+/* Stage: only interactive zone */
 .stage{
   display: flex;
   align-items: center;
@@ -69,16 +66,15 @@ body{
 /* Flipbook dominates */
 .flipbook{
   width: min(1200px, 100%);
-  height: 78vh;              /* tall, but contained */
+  height: 78vh;                    /* tall, deliberate */
   border: none;
   display: block;
 }
 
-/* Mobile: tighter, still locked */
+/* Mobile refinement */
 @media (max-width: 520px){
-  .name{
-    font-size: 16px;
-    letter-spacing: 0.6px;
+  .header-mark{
+    width: min(420px, 92vw);
   }
 
   .flipbook{
