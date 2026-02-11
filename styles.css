@@ -3,23 +3,16 @@
   --pad-top: 48px;
   --pad-bottom: 48px;
 
-  /* Light mode defaults */
+  /* Fixed colors (no auto switching) */
   --bg: transparent;
-  --text: #111;
-  --link-hover: 0.55;
-}
-
-/* Auto dark mode */
-@media (prefers-color-scheme: dark){
-  :root{
-    --bg: transparent;
-    --text: #f2f2f2;
-    --link-hover: 0.65;
-  }
+  --text: #000;
+  --link-hover: 0.5;
 }
 
 /* Reset */
-*{ box-sizing: border-box; }
+*{
+  box-sizing: border-box;
+}
 
 html, body{
   height: 100%;
@@ -29,17 +22,23 @@ html, body{
   color: var(--text);
 }
 
-/* More noticeable fade-in */
+/* Fade-in animation */
 .fade-in{
   animation: fadeIn 0.9s cubic-bezier(0.2, 0, 0.1, 1) forwards;
 }
 
 @keyframes fadeIn{
-  from{ opacity: 0; transform: translateY(12px); }
-  to{ opacity: 1; transform: translateY(0); }
+  from{
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to{
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-/* Layout */
+/* Page layout */
 body{
   display: grid;
   grid-template-rows: auto 1fr auto;
@@ -66,14 +65,14 @@ body{
   align-items: center;
   justify-content: center;
 
-  /* slightly taller on desktop by giving the stage more vertical space */
+  /* Slightly taller on desktop */
   min-height: 72vh;
 }
 
 .flipbook{
   width: min(1200px, 100%);
   height: 100%;
-  min-height: 72vh;   /* desktop gets more height */
+  min-height: 72vh;
   border: none;
   display: block;
 }
@@ -85,7 +84,7 @@ body{
   justify-content: center;
 }
 
-/* LinkedIn back to original size/weight */
+/* LinkedIn (original size & weight) */
 .link{
   font-size: 14px;
   font-weight: 500;
@@ -107,10 +106,20 @@ body{
     --pad-bottom: 36px;
   }
 
-  .name{ font-size: 26px; }
-  .link{ font-size: 13px; }
+  .name{
+    font-size: 26px;
+  }
 
-  /* don’t force extra height on small screens */
-  .stage{ min-height: 0; }
-  .flipbook{ min-height: 0; }
+  .link{
+    font-size: 13px;
+  }
+
+  /* Don’t force extra height on small screens */
+  .stage{
+    min-height: 0;
+  }
+
+  .flipbook{
+    min-height: 0;
+  }
 }
