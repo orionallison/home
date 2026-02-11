@@ -1,6 +1,7 @@
 :root{
   --pad-x: 24px;
-  --pad-top: 56px;
+  --pad-top: 56px;     /* top padding above header */
+  --pad-bottom: 26px;  /* space below footer mark */
 }
 
 /* Reset */
@@ -17,10 +18,11 @@ html, body{
   background: transparent;
 }
 
-/* Lock page as a single object */
+/* Lock page as a single object: header + flipbook + footer */
 body{
   display: grid;
-  grid-template-rows: auto 1fr;
+  grid-template-rows: auto 1fr auto;
+  height: 100vh;
 }
 
 /* Sequenced fade-in */
@@ -32,6 +34,7 @@ body{
 
 .fade-1{ animation-delay: 0.05s; }
 .fade-2{ animation-delay: 0.22s; }
+.fade-3{ animation-delay: 0.38s; }
 
 @keyframes riseFade{
   to{
@@ -40,17 +43,17 @@ body{
   }
 }
 
-/* Header (non-interactive, quiet) */
+/* Header (non-interactive) */
 .topbar{
-  padding: var(--pad-top) var(--pad-x) 0px;
+  padding: var(--pad-top) var(--pad-x) 4px; /* reduced gap to flipbook */
   display: flex;
   justify-content: center;
-  pointer-events: none;            /* anti-website: no UI affordance */
+  pointer-events: none;
 }
 
 /* Handwritten header image */
 .header-mark{
-  width: min(360px, 80vw);         /* responsive */
+  width: min(360px, 80vw); /* smaller header */
   height: auto;
   display: block;
 }
@@ -66,18 +69,45 @@ body{
 /* Flipbook dominates */
 .flipbook{
   width: min(1200px, 100%);
-  height: 78vh;                    /* tall, deliberate */
+  height: 78vh;
   border: none;
+  display: block;
+}
+
+/* Footer logo mark (non-interactive) */
+.footer-mark{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px var(--pad-x) var(--pad-bottom);
+  pointer-events: none;
+}
+
+.footer-mark img{
+  width: 30px;
+  height: auto;
+  opacity: 0.75;
   display: block;
 }
 
 /* Mobile refinement */
 @media (max-width: 520px){
+  :root{
+    --pad-x: 18px;
+    --pad-top: 44px;
+    --pad-bottom: 22px;
+  }
+
   .header-mark{
-    width: min(420px, 92vw);
+    width: min(300px, 86vw);
   }
 
   .flipbook{
     height: 82vh;
+  }
+
+  .footer-mark img{
+    width: 26px;
+    opacity: 0.72;
   }
 }
