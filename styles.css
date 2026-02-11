@@ -1,6 +1,6 @@
 :root{
   --pad-x: 24px;
-  --pad-top: 56px;     /* top padding above header */
+  --pad-top: 28px;     /* top padding above header */
   --pad-bottom: 26px;  /* space below footer mark */
 }
 
@@ -53,7 +53,7 @@ body{
 
 /* Handwritten header image */
 .header-mark{
-  width: min(360px, 80vw); /* smaller header */
+  width: min(280px, 70vw); /* smaller, controlled */
   height: auto;
   display: block;
 }
