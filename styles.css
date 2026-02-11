@@ -1,18 +1,15 @@
 :root{
   --pad-x: 28px;
-  --pad-top: 48px;
-  --pad-bottom: 48px;
+  --pad-top: 40px;
+  --pad-bottom: 44px;
 
-  /* Fixed colors (no auto switching) */
   --bg: transparent;
   --text: #000;
   --link-hover: 0.5;
 }
 
 /* Reset */
-*{
-  box-sizing: border-box;
-}
+*{ box-sizing: border-box; }
 
 html, body{
   height: 100%;
@@ -22,69 +19,71 @@ html, body{
   color: var(--text);
 }
 
-/* Fade-in animation */
-.fade-in{
-  animation: fadeIn 0.9s cubic-bezier(0.2, 0, 0.1, 1) forwards;
-}
-
-@keyframes fadeIn{
-  from{
-    opacity: 0;
-    transform: translateY(12px);
-  }
-  to{
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Page layout */
+/* Layout */
 body{
   display: grid;
   grid-template-rows: auto 1fr auto;
   min-height: 100vh;
 }
 
-/* Top */
+/* Sequenced fade-in (header -> flipbook -> footer) */
+.fade-seq{
+  opacity: 0;
+  transform: translateY(10px);
+  animation: riseFade 0.9s cubic-bezier(0.2, 0, 0.1, 1) forwards;
+}
+
+.fade-1{ animation-delay: 0.05s; }
+.fade-2{ animation-delay: 0.22s; }
+.fade-3{ animation-delay: 0.38s; }
+
+@keyframes riseFade{
+  to{
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Top: quieter, more “publication” */
 .topbar{
-  padding: var(--pad-top) var(--pad-x) 16px;
+  padding: var(--pad-top) var(--pad-x) 10px;
   display: flex;
   justify-content: center;
 }
 
 .name{
-  font-size: 32px;
+  font-size: 18px;   /* reduced dominance */
   font-weight: 600;
-  letter-spacing: 0.4px;
+  letter-spacing: 0.2px;
+  line-height: 1.1;
 }
 
-/* Middle */
+/* Middle: flipbook priority */
 .stage{
   padding: 0 var(--pad-x);
   display: flex;
   align-items: center;
   justify-content: center;
 
-  /* Slightly taller on desktop */
-  min-height: 72vh;
+  /* slightly taller on desktop */
+  min-height: 76vh;
 }
 
 .flipbook{
   width: min(1200px, 100%);
   height: 100%;
-  min-height: 72vh;
+  min-height: 76vh;  /* makes flipbook feel “almost full screen” */
   border: none;
   display: block;
 }
 
 /* Bottom */
 .bottombar{
-  padding: 16px var(--pad-x) var(--pad-bottom);
+  padding: 10px var(--pad-x) var(--pad-bottom);
   display: flex;
   justify-content: center;
 }
 
-/* LinkedIn (original size & weight) */
 .link{
   font-size: 14px;
   font-weight: 500;
@@ -102,24 +101,14 @@ body{
 @media (max-width: 520px){
   :root{
     --pad-x: 18px;
-    --pad-top: 36px;
-    --pad-bottom: 36px;
+    --pad-top: 28px;
+    --pad-bottom: 30px;
   }
 
-  .name{
-    font-size: 26px;
-  }
-
-  .link{
-    font-size: 13px;
-  }
+  .name{ font-size: 16px; }
+  .link{ font-size: 13px; }
 
   /* Don’t force extra height on small screens */
-  .stage{
-    min-height: 0;
-  }
-
-  .flipbook{
-    min-height: 0;
-  }
+  .stage{ min-height: 0; }
+  .flipbook{ min-height: 0; }
 }
