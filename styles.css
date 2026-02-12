@@ -1,7 +1,7 @@
 :root{
   --pad-x: 24px;
-  --pad-top: 28px;     /* header closer to top */
-  --pad-bottom: 26px;  /* space below footer mark */
+  --pad-top: 28px;
+  --pad-bottom: 26px;
 }
 
 /* Reset */
@@ -16,6 +16,19 @@ html, body{
   overflow: hidden;                /* anti-website: no scrolling */
   font-family: Helvetica, Arial, sans-serif;
   background: transparent;
+}
+
+/* --------------------------
+   CUSTOM CURSOR (DESKTOP ONLY)
+   -------------------------- */
+@media (hover: hover){
+  html{
+    cursor: url("cursor.png") 32 32, auto;
+  }
+
+  a{
+    cursor: url("cursor.png") 32 32, pointer;
+  }
 }
 
 /* Lock page as a single object: header + flipbook + footer */
@@ -113,7 +126,7 @@ body{
 }
 
 /* --------------------------
-   MOBILE ONLY — FINAL FIX
+   MOBILE ONLY
    -------------------------- */
 @media (max-width: 520px){
   :root{
@@ -122,12 +135,15 @@ body{
     --pad-bottom: 13px;
   }
 
-  /* Smaller header on mobile */
   .header-mark{
     width: min(140px, 42vw);
   }
 
-  /* Fixed footer above Safari bar */
+  .topbar{
+    padding: var(--pad-top) var(--pad-x) 1px;
+  }
+
+  /* Footer lifted above Safari bar */
   .footer-mark{
     position: fixed;
     left: 0;
@@ -139,13 +155,11 @@ body{
     gap: 18px;
   }
 
-  /* KEY LINE:
-     reserve footer space so flipbook centers between header + footer */
+  /* Reserve footer space so flipbook centers correctly */
   .stage{
     padding-bottom: calc(64px + env(safe-area-inset-bottom));
   }
 
-  /* Slightly smaller icons */
   .icon-link img{
     width: 22px;
   }
