@@ -20,14 +20,20 @@ html, body{
 
 /* --------------------------
    CUSTOM CURSOR (DESKTOP ONLY)
+   - Adjust hotspot if needed
    -------------------------- */
 @media (hover: hover){
   html{
-    cursor: url("cursor.png") 32 32, auto;
+    cursor: url("cursor.png") 12 12, auto;
   }
 
-  a{
-    cursor: url("cursor.png") 32 32, pointer;
+  a, button, [role="button"]{
+    cursor: url("cursor.png") 12 12, pointer;
+  }
+
+  /* ensure the iframe area uses the custom cursor too */
+  .flipbook{
+    cursor: url("cursor.png") 12 12, auto;
   }
 }
 
@@ -79,7 +85,7 @@ body{
   padding: 0 var(--pad-x);
 }
 
-/* Flipbook — unchanged */
+/* Flipbook iframe (unchanged) */
 .flipbook{
   width: min(1200px, 100%);
   height: 78vh;
@@ -126,7 +132,7 @@ body{
 }
 
 /* --------------------------
-   MOBILE ONLY
+   MOBILE ONLY (your working layout)
    -------------------------- */
 @media (max-width: 520px){
   :root{
@@ -155,7 +161,7 @@ body{
     gap: 18px;
   }
 
-  /* Reserve footer space so flipbook centers correctly */
+  /* Reserve footer space so flipbook centers between header + footer */
   .stage{
     padding-bottom: calc(64px + env(safe-area-inset-bottom));
   }
