@@ -24,16 +24,16 @@ html, body{
    -------------------------- */
 @media (hover: hover){
   html{
-    cursor: url("cursor.png") 12 12, auto;
+    cursor: url("cursor.png") 8 8, auto;
   }
 
   a, button, [role="button"]{
-    cursor: url("cursor.png") 12 12, pointer;
+    cursor: url("cursor.png") 8 8, pointer;
   }
 
   /* ensure the iframe area uses the custom cursor too */
   .flipbook{
-    cursor: url("cursor.png") 12 12, auto;
+    cursor: url("cursor.png") 8 8, auto;
   }
 }
 
